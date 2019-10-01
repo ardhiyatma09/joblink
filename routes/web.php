@@ -18,8 +18,17 @@
 Route::get('/login','FrontController@login');
 Route::get('/daftar','FrontController@daftar');
 Route::get('/home','FrontController@index');
-Route::get('/detail','FrontController@detail');
-Route::post('/loginPost','FrontController@detail');
+Route::get('/profile','FrontController@profile');
+Route::get('/loginPost','FrontController@detail');
+
+//Admin
+
+Route::get('/loginAdmin','FrontController@loginAdmin');
+Route::get('/dashboard','AdminController@index');
+Route::get('/user','FirebaseAdminController@index');
+Route::get('/list','FirebaseAdminController@listJob');
+Route::get('/regisadmin','AdminController@register');
+
 
 
 

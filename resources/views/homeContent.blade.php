@@ -116,7 +116,17 @@
                         <textarea id="deskripsi" class="form-control" cols="30" rows="5"></textarea>
                     </div>
                 </div>
-
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <div class="custom-file">
+                            <input type="file" class="custom-file-input"
+                                aria-describedby="inputGroupFileAddon01" id="foto" onchange="previewFile()">
+                            <label class="custom-file-label" for="inputGroupFile01">Upload Logo Perusahaan...</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row form-group">
                     <div class="col-md-12">
                         <button onclick="addjob()" class="btn btn-primary  py-2 px-5">Submit</button>
@@ -125,24 +135,12 @@
             </div>
 
             <div class="col-lg-4">
-                <div class="p-4 mb-3 bg-white">
-                    <h3 class="h5 text-black mb-3">Contact Info</h3>
-                    <p class="mb-0 font-weight-bold">Address</p>
-                    <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
-
-                    <p class="mb-0 font-weight-bold">Phone</p>
-                    <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
-
-                    <p class="mb-0 font-weight-bold">Email Address</p>
-                    <p class="mb-0"><a href="#">youremail@domain.com</a></p>
-
-                </div>
 
                 <div class="p-4 mb-3 bg-white">
                     <h3 class="h5 text-black mb-3">More Info</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto
                         hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur</p>
-                    <p><a href="#" class="btn btn-primary  py-2 px-4">Learn More</a></p>
+                    <p><a href="{{url('profile')}}" onclick="editProfile()" class="btn btn-primary  py-2 px-4">Learn More</a></p>
                 </div>
             </div>
         </div>

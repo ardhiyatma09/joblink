@@ -94,45 +94,20 @@
                             amet.</p>
                         <p><a href="#" class="btn btn-primary pill text-white px-4">Read More</a></p>
                     </div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h3 class="footer-heading mb-4 text-white">Quick Menu</h3>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Services</a></li>
-                                    <li><a href="#">Approach</a></li>
-                                    <li><a href="#">Sustainability</a></li>
-                                    <li><a href="#">News</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h3 class="footer-heading mb-4 text-white">Categories</h3>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Full Time</a></li>
-                                    <li><a href="#">Freelance</a></li>
-                                    <li><a href="#">Temporary</a></li>
-                                    <li><a href="#">Internship</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="col-md-4">
+
                     </div>
 
 
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="col-md-12">
-                            <h3 class="footer-heading mb-4 text-white">Social Icons</h3>
+                            <h3 class="footer-heading mb-4 text-white">Admin</h3>
                         </div>
-                        <div class="col-md-12">
-                            <p>
-                                <a href="#" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
-                                <a href="#" class="p-2"><span class="icon-twitter"></span></a>
-                                <a href="#" class="p-2"><span class="icon-instagram"></span></a>
-                                <a href="#" class="p-2"><span class="icon-vimeo"></span></a>
-
-                            </p>
-                        </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="{{URL('loginAdmin')}}" onclick="logout()">Halaman Admin</a></li>
+                                </ul>
+                            </div>
                     </div>
                 </div>
                 <div class="row pt-5 mt-5 text-center">
@@ -304,7 +279,7 @@
          authDomain: "joblink-e7c44.firebaseapp.com",
          databaseURL: "https://joblink-e7c44.firebaseio.com",
          projectId: "joblink-e7c44",
-         storageBucket: "",
+         storageBucket: "joblink-e7c44.appspot.com",
          messagingSenderId: "418211748871",
          appId: "1:418211748871:web:28279476df4743ed7b1ea2"
 
@@ -335,12 +310,45 @@
                 }
                 else{
                     window.location.href = "{{url('/login')}}";
+                    firebase.auth().signOut();
                 }
                 });
 
        function logout(){
         firebase.auth().signOut();
        }
+
+        var storageRef = firebase.storage().ref();
+        var Foto = "";
+
+        function previewFile(){
+        var uploader = document.getElementById('uploader');
+        var file =document.querySelector('input[type=file]').files[0];
+        var uploadTask = storageRef.child('logo_perusahaan/' + file.name).put(file);
+
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+        function(snapshot) {
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED:
+                    console.log('Upload is paused');
+                    break;
+                case firebase.storage.TaskState.RUNNING:
+                    console.log('Upload is running');
+                    break;
+            }
+            }, function(error) {
+                console.log('error while uploading')
+            }, function() {
+                var starsRef = storageRef.child('logo_perusahaan/'+ file.name);
+                starsRef.getDownloadURL().then(function(url) {
+                    // document.querySelector('#preview').src=url;
+                    foto = url;
+                    // $('#foto_field').attr('src', url);
+                });
+            });
+        }
 
        function addjob(){
         firebase.auth().onAuthStateChanged(function(user) {
@@ -352,6 +360,7 @@
                             waktuBekerja:$('#waktuBekerja').val(),
                             gaji:$('#gaji').val(),
                             lokasi:$('#lokasi').val(),
+                            foto:foto,
                             namaPerusahaan:$('#namaPerusahaan').val(),
                             deskripsi:$('#deskripsi').val()
 
@@ -407,6 +416,19 @@
                     $('#namaPerusahaan').val(snapshot.child('namaPerusahaan').val());
                     $('#waktuBekerja').val(snapshot.child('waktuBekerja').val());
                     $('#deskripsi').val(snapshot.child('deskripsi').val());
+                });
+            } else {
+
+            }
+        })
+       }
+
+       function editProfile(){
+        firebase.auth().onAuthStateChanged(function(user){
+            if (user) {
+                firebase.database().ref().child('Users/' + user.uid).on('value', function(snapshot){
+                    $('#password').val(snapshot.child('password').val());
+                    $('#email').val(snapshot.child('email').val());
                 });
             } else {
 

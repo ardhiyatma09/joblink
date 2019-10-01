@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Selamat Datang !</title>
+    <title>Halaman Daftar</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -28,14 +28,6 @@
     <link rel="stylesheet" href="{{URL('assets/css/main.css')}}">
     <!--===============================================================================================-->
 
-    <script type="text/javascript">
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
-    </script>
 
 </head>
 
@@ -45,7 +37,7 @@
         <div class="container-login100">
             <div class="wrap-login100 p-t-85 p-b-20">
                     <span class="login100-form-title p-b-70">
-                        Daftar
+                        Daftar Akun
                     </span>
                     <span class="login100-form-avatar">
                         <img src="{{URL('assets/images/joblink_logo.png')}}" alt="AVATAR">
@@ -60,7 +52,6 @@
                         <input class="input100" type="password" name="password" id="password">
                         <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
-
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" onclick="regis()">
                             Daftar
@@ -70,11 +61,11 @@
                     <ul class="login-more p-t-190">
                         <li>
                             <span class="txt1">
-                                Don’t have an account?
+                                Sudah punya akun?
                             </span>
 
-                            <a href="#" class="txt2">
-                                Sign up
+                            <a href="{{URL('login')}}" class="txt2">
+                                Sign In
                             </a>
                         </li>
                     </ul>
@@ -87,6 +78,7 @@
 
     <!--===============================================================================================-->
     <script src="{{URL('assets/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <!--===============================================================================================-->
     <script src="{{URL('assets/vendor/animsition/js/animsition.min.js')}}"></script>
     <!--===============================================================================================-->
@@ -124,21 +116,37 @@
         var userEmail = $('#email').val();
         var userPass = $('#password').val();
 
+
         firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     firebase.database().ref('Users/' + user.uid).set({
         userid: user.uid,
         email: userEmail,
-        password : userPass
+        password : userPass,
             }, function(error) {
             if (error) {
             // The write failed...
             alert("gagal");
             } else {
             // Data saved successfully!
-            alert("berhasil");
-            firebase.auth().signOut();
-            window.location.href = "{{url('/login')}}";
+            Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Berhasil Daftar',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    onBeforeOpen: () => {
+                    timerInterval = setInterval(() => {
+                    Swal.getContent().querySelector('strong')
+                        .textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                    onClose: () => {
+                    clearInterval(timerInterval)
+                    firebase.auth().signOut();
+                    window.location.href = "{{url('/login')}}";
+                }
+                    })
             }
         });
     // ...
