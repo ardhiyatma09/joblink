@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Job Finder &mdash; Colorlib Website Template</title>
+    <title>JobLink &mdash; Pekerjaan Baik Menunggu Anda</title>
+    <link rel="icon" type="image/png" href="{{URL('assets/images/joblink_logo.png')}}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -10,12 +11,14 @@
     <link rel="stylesheet" href="fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="{{URL('assets/css/bootstrap.min.css')}}">
+    <link href="{{URL('assets/font-awesome/css/all.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{URL('assets/css/magnific-popup.css')}}">
     <link rel="stylesheet" href="{{URL('assets/css/jquery-ui.css')}}">
     <link rel="stylesheet" href="{{URL('assets/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{URL('assets/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{URL('assets/css/bootstrap-datepicker.css')}}">
     <link rel="stylesheet" href="{{URL('assets/css/animate.css')}}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
 
@@ -97,18 +100,6 @@
                     <div class="col-md-4">
 
                     </div>
-
-
-                    <div class="col-md-4">
-                        <div class="col-md-12">
-                            <h3 class="footer-heading mb-4 text-white">Admin</h3>
-                        </div>
-                            <div class="col-md-6">
-                                <ul class="list-unstyled">
-                                    <li><a href="{{URL('loginAdmin')}}" onclick="logout()">Halaman Admin</a></li>
-                                </ul>
-                            </div>
-                    </div>
                 </div>
                 <div class="row pt-5 mt-5 text-center">
                     <div class="col-md-12">
@@ -142,11 +133,18 @@
     <script src="{{URL('assets/js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{URL('assets/js/aos.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 
     <script src="{{URL('assets/js/mediaelement-and-player.min.js')}}"></script>
 
     <script src="{{URL('assets/js/main.js')}}"></script>
+
+    <script type="text/javascript">
+        AOS.init({
+            duration : 1000,
+        })
+    </script>
 
 
     <script>
@@ -309,13 +307,27 @@
                     });
                 }
                 else{
-                    window.location.href = "{{url('/login')}}";
-                    firebase.auth().signOut();
+                    // window.location.href = "{{url('/login')}}";
+                    // firebase.auth().signOut();
                 }
                 });
 
        function logout(){
-        firebase.auth().signOut();
+        $.ajax({
+                type: "get",
+                url: "{{url('logout')}}",
+                data: {
+                    _token: "{{csrf_token()}}",
+                    id: 1
+                },
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    firebase.auth().signOut();
+                    window.location.href = "{{url('home')}}"
+
+                }
+            });
        }
 
         var storageRef = firebase.storage().ref();

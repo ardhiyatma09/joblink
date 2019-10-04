@@ -18,8 +18,8 @@
 Route::get('/login','FrontController@login');
 Route::get('/daftar','FrontController@daftar');
 Route::get('/home','FrontController@index');
-Route::get('/profile','FrontController@profile');
-Route::get('/loginPost','FrontController@detail');
+Route::get('/loginPost','FrontController@loginPost');
+Route::get('/logout','FrontController@logout');
 
 //Admin
 

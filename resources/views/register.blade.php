@@ -36,39 +36,44 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100 p-t-85 p-b-20">
-                    <span class="login100-form-title p-b-70">
-                        Daftar Akun
-                    </span>
-                    <span class="login100-form-avatar">
-                        <img src="{{URL('assets/images/joblink_logo.png')}}" alt="AVATAR">
-                    </span>
+                <span class="login100-form-title p-b-70">
+                    Daftar Akun
+                </span>
+                <span class="login100-form-avatar">
+                    <img src="{{URL('assets/images/joblink_logo.png')}}" alt="AVATAR">
+                </span>
 
-                    <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
-                        <input class="input100" type="text" name="email" id="email">
-                        <span class="focus-input100" data-placeholder="Email"></span>
-                    </div>
+                <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
+                    <input class="input100" type="text" name="email" id="email">
+                    <span class="focus-input100" data-placeholder="Email"></span>
+                </div>
 
-                    <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-                        <input class="input100" type="password" name="password" id="password">
+                <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+                    <input class="input100" type="password" name="password" id="password">
+                    <span class="focus-input100" data-placeholder="Password"></span>
+                </div>
+                <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password" hidden>
+                        <input class="input100" type="password" name="status" id="status" value="user">
                         <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
-                    <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" onclick="regis()">
-                            Daftar
-                        </button>
-                    </div>
 
-                    <ul class="login-more p-t-190">
-                        <li>
-                            <span class="txt1">
-                                Sudah punya akun?
-                            </span>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" onclick="regis()">
+                        Daftar
+                    </button>
+                </div>
 
-                            <a href="{{URL('login')}}" class="txt2">
-                                Sign In
-                            </a>
-                        </li>
-                    </ul>
+                <ul class="login-more p-t-190">
+                    <li>
+                        <span class="txt1">
+                            Sudah punya akun?
+                        </span>
+
+                        <a href="{{URL('login')}}" class="txt2">
+                            Sign In
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -115,6 +120,7 @@
       function regis(){
         var userEmail = $('#email').val();
         var userPass = $('#password').val();
+        var status = $('#status').val();
 
 
         firebase.auth().onAuthStateChanged(function(user) {
@@ -122,7 +128,9 @@
     firebase.database().ref('Users/' + user.uid).set({
         userid: user.uid,
         email: userEmail,
-        password : userPass,
+        password: userPass,
+        status: status,
+        job: "null"
             }, function(error) {
             if (error) {
             // The write failed...
@@ -166,7 +174,7 @@
 
       }
 
-</script>
+    </script>
 </body>
 
 </html>

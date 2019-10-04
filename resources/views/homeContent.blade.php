@@ -4,7 +4,7 @@
 <div style="height: 113px;"></div>
 
 <div class="site-blocks-cover overlay" style="background-image: url('{{URL('assets/images/hero_1.jpg')}}');"
-    data-aos="fade" data-stellar-background-ratio="0.5">
+    data-aos="fade-up" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-12" data-aos="fade">
@@ -12,7 +12,8 @@
                 <h1>Karyamanmu Disini</h1>
                 <div class="row mb-3">
                     <div class="col-md-3">
-                        <button class="btn btn-search btn-primary btn-block" href="#tambahlowongan">Tambah Lowongan</button>
+                        <a href="#tambahlowongan"><button class="btn btn-search btn-primary btn-block">Tambah
+                                Lowongan</button></a>
                     </div>
                 </div>
                 <div class="row">
@@ -26,32 +27,31 @@
 </div>
 
 
-<div class="site-section" data-aos="fade" id="testimoni">
+<div class="site-section" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" id="testimoni">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6 mb-5 mb-md-0">
 
                 <div class="img-border">
-                    <a href="https://vimeo.com/28959265" class="popup-vimeo image-play">
+                    <a href="https://www.youtube.com/watch?v=TcMBFSGVi1c" class="popup-vimeo image-play">
                         <span class="icon-wrap">
-                            <span class="icon icon-play"></span>
+                            <span class="fas fa-play"></span>
                         </span>
-                        <img src="images/hero_2.jpg" alt="Image" class="img-fluid rounded">
+                        <img src="{{URL('assets/images/hero_2.jpg')}}" alt="Image" class="img-fluid rounded">
                     </a>
                 </div>
 
             </div>
             <div class="col-md-5 ml-auto">
                 <div class="text-left mb-5 section-heading">
-                    <h2>Testimonies</h2>
+                    <h2>Testimoni</h2>
                 </div>
 
                 <p class="mb-4 h5 font-italic lineheight1-5">&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing
                     elit. Eaque, nisi Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit nobis magni eaque
                     velit eum, id rem eveniet dolor possimus voluptas..&rdquo;</p>
                 <p>&mdash; <strong class="text-black font-weight-bold">John Holmes</strong>, Marketing Strategist</p>
-                <p><a href="https://vimeo.com/28959265" class="popup-vimeo text-uppercase">Watch Video <span
-                            class="icon-arrow-right small"></span></a></p>
+
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 col-lg-8 mb-5">
+            <div class="col-md-12 col-lg-8 mb-5" data-aos="fade-right">
 
                 <div class="row form-group">
                     <div class="col-md-12 mb-3 mb-md-0">
@@ -120,9 +120,10 @@
                     <div class="col-md-12">
                         <div class="input-group">
                             <div class="custom-file">
-                            <input type="file" class="custom-file-input"
-                                aria-describedby="inputGroupFileAddon01" id="foto" onchange="previewFile()">
-                            <label class="custom-file-label" for="inputGroupFile01">Upload Logo Perusahaan...</label>
+                                <input type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon01"
+                                    id="foto" onchange="previewFile()">
+                                <label class="custom-file-label" for="inputGroupFile01">Upload Logo
+                                    Perusahaan...</label>
                             </div>
                         </div>
                     </div>
@@ -134,23 +135,29 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4" data-aos="fade-left">
 
                 <div class="p-4 mb-3 bg-white">
-                    <h3 class="h5 text-black mb-3">More Info</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto
-                        hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur</p>
-                    <p><a href="{{url('profile')}}" onclick="editProfile()" class="btn btn-primary  py-2 px-4">Learn More</a></p>
+                    <h3 class="h5 text-black mb-3">Info Kontak</h3>
+              <p class="mb-0 font-weight-bold">Alamat</p>
+              <p class="mb-4">Jalan Inpres No. 13 & 14 Kav.27A, RT.1/RW.1, Kedoya Utara, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11520</p>
+
+              <p class="mb-0 font-weight-bold">Nomor Telepon</p>
+              <p class="mb-4"><a href="#">0823 0169 2727</a></p>
+
+              <p class="mb-0 font-weight-bold">Alamat Email</p>
+              <p class="mb-0"><a href="#">ardiyatma.wibawa12@gmail.com</a></p>
                 </div>
             </div>
         </div>
     </div>
+    <div id="download"></div>
 </div>
 
 
 
 <div class="site-blocks-cover overlay inner-page" style="background-image: url('{{URL('assets/images/hero_1.jpg')}}');"
-    data-aos="fade" data-stellar-background-ratio="0.5" id="download">
+    data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-md-6 text-center" data-aos="fade">
@@ -158,7 +165,6 @@
                 <p class="h3 text-white mb-5">Is Waiting For You</p>
                 <p><a href="#" class="btn btn-outline-warning py-3 px-4">Find Jobs</a> <a href="#"
                         class="btn btn-warning py-3 px-4">Apply For A Job</a></p>
-
             </div>
         </div>
     </div>
@@ -171,7 +177,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-12 col-lg-8 mb-5">
+            <div class="col-md-12 col-lg-8 mb-5" data-aos="fade-right">
 
 
 
@@ -197,18 +203,6 @@
                         </div>
                     </div>
 
-
-
-                    <div class="img-border mb-5">
-                        <a href="https://vimeo.com/28959265" class="popup-vimeo image-play">
-                            <span class="icon-wrap">
-                                <span class="icon icon-play"></span>
-                            </span>
-                            <img src="images/hero_2.jpg" alt="Image" class="img-fluid rounded">
-                        </a>
-                    </div>
-
-
                     <div id="deskripsi2">
 
                     </div>
@@ -219,13 +213,15 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"
+                data-aos-offset="0">
 
 
                 <div class="p-4 mb-3 bg-white">
                     <h3 class="h5 text-black mb-3">Ingin Menghapus Lowongan?</h3>
                     <p>Silakan hapus lowongan anda jika perusahaan anda telah mendapat karyawan yang cukup</p>
-                    <p><a onclick="dell()" class="btn btn-danger  py-2 px-4" style="color: white;">Hapus Lowongan</a></p>
+                    <p><a onclick="dell()" class="btn btn-danger  py-2 px-4" style="color: white;">Hapus Lowongan</a>
+                    </p>
                 </div>
             </div>
         </div>

@@ -69,6 +69,15 @@
                             Sign up
                         </a>
                     </li>
+                    <li class="m-b-8">
+                            <span class="txt1">
+                                Halaman
+                            </span>
+
+                            <a href="{{URL('loginAdmin')}}" class="txt2">
+                                Admin
+                            </a>
+                        </li>
                 </ul>
             </div>
         </div>
@@ -232,52 +241,88 @@
     //     });
 
     firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-    let timerInterval
-        Swal.fire({
-        title: 'Wait For Me',
-        timer: 2000,
-        onBeforeOpen: () => {
-            Swal.showLoading()
-            timerInterval = setInterval(() => {
-            Swal.getContent().querySelector('strong')
-                .textContent = Swal.getTimerLeft()
-            }, 200)
-        },
-        onClose: () => {
+        if (user) {
+            var user = firebase.auth().currentUser;
+            firebase.database().ref('Users/' + user.uid).once('value').then(function(snapshot) {
+            var status = (snapshot.val() && snapshot.val().status) || 'Anonymous';
+            var email = (snapshot.val() && snapshot.val().email) || 'Anonymous';
+            var password = (snapshot.val() && snapshot.val().password) || 'Anonymous';
+            if (status == "user") {
+            $.ajax({
+                type: "get",
+                url: "{{url('loginPost')}}",
+                data: {
+                    _token: "{{csrf_token()}}",
+                    email: email,
+                    userId: user.uid,
+                    password: password
+                },
+                processData: false,
+                contentType: false,
+                success: function (data) {
+					// console.log(data);
+					if(data == 1){
+                        let timerInterval
+                Swal.fire({
+                title: 'Wait For Me',
+                timer: 2000,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                    Swal.getContent().querySelector('strong')
+                        .textContent = Swal.getTimerLeft()
+                    }, 200)
+                },
+                onClose: () => {
+                    Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Login Sukses',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    onBeforeOpen: () => {
+                    timerInterval = setInterval(() => {
+                    Swal.getContent().querySelector('strong')
+                        .textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                    onClose: () => {
+                    clearInterval(timerInterval)
+                    window.location.href = "{{url('login')}}";
+                }
+                    })
+                }
+
+                }).then((result) => {
+                if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.timer
+                ) {
+                    console.log('I was closed by the timer')
+                }
+                })
+                    }else{
+
+                 	 }
+                    }
+            });
+        }else{
             Swal.fire({
-            position: 'center',
-            type: 'success',
-            title: 'Login Sukses',
-            showConfirmButton: false,
-            timer: 1000,
-            onBeforeOpen: () => {
-            timerInterval = setInterval(() => {
-            Swal.getContent().querySelector('strong')
-                .textContent = Swal.getTimerLeft()
-            }, 100)
-        },
-            onClose: () => {
-            clearInterval(timerInterval)
-            window.location.href = "{{url('/home')}}";
-        }
+            type: 'error',
+            title: 'Akun anda belum terdaftar...',
+            text: 'Silakan daftar terlebih dahulu',
             })
         }
-        }).then((result) => {
-        if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.timer
-        ) {
-            console.log('I was closed by the timer')
+        });
+
+
+
+            // ...
+        } else {
+            // User is signed out.
+            // ...
         }
-        })
-    // ...
-  } else {
-    // User is signed out.
-    // ...
-  }
-});
+        });
 
 
      function login(){

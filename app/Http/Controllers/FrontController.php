@@ -8,20 +8,44 @@ use Session;
 class FrontController extends Controller
 {
     public function index(){
-        return view ('homeContent');
+        if(!Session::get('login')){
+            return redirect('login');
+        }else{
+            return view ('homeContent');
+        }
+
     }
     public function login(){
-        return view ('login');
+        if(Session::get('login')){
+            return redirect('home');
+        }else{
+            return view ('login');
+        }
     }
     public function daftar(){
-        return view ('register');
+        if(Session::get('login')){
+            return redirect('home');
+        }else{
+            return view ('register');
+        }
+
     }
-    public function detail()
+    public function loginPost(Request $request)
     {
+        $request->email;
+        $request->userId;
+        $request->password;
         Session::put('login',true);
         echo 1;
     }
     public function loginAdmin(){
-        return view('admin.loginAdmin');
+        if(Session::get('login')){
+            return redirect('dashboard');
+        }else{
+            return view ('admin.loginAdmin');
+        }
+    }
+    public function logout(){
+        Session::flush();
     }
 }

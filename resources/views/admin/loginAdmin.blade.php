@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register Admin | Joblink</title>
-
+    <title>Login Admin | Joblink</title>
     <link rel="stylesheet" href="{{URL('assets/css/style2.css')}}">
 </head>
-
 <body>
     <div class="login-page">
         <h1>Login Untuk Admin<h1>
@@ -18,6 +15,7 @@
                         <input type="text" id="email" placeholder="Email" />
                         <input type="password" id="password" placeholder="Password" />
                         <button onclick="login()">login</button>
+                        <p class="message">Kembali ke <a href="{{URL('login')}}">Login User</a></p>
                     </div>
                 </div>
     </div>
@@ -40,54 +38,6 @@
       };
       // Initialize Firebase
       firebase.initializeApp(config);
-
-//       firebase.auth().onAuthStateChanged(function(user) {
-//   if (user) {
-//     // User is signed in.
-//     let timerInterval
-//         Swal.fire({
-//         title: 'Wait For Me',
-//         timer: 2000,
-//         onBeforeOpen: () => {
-//             Swal.showLoading()
-//             timerInterval = setInterval(() => {
-//             Swal.getContent().querySelector('strong')
-//                 .textContent = Swal.getTimerLeft()
-//             }, 200)
-//         },
-//         onClose: () => {
-//             Swal.fire({
-//             position: 'center',
-//             type: 'success',
-//             title: 'Login Sukses',
-//             showConfirmButton: false,
-//             timer: 1000,
-//             onBeforeOpen: () => {
-//             timerInterval = setInterval(() => {
-//             Swal.getContent().querySelector('strong')
-//                 .textContent = Swal.getTimerLeft()
-//             }, 100)
-//         },
-//             onClose: () => {
-//             clearInterval(timerInterval)
-//             window.location.href = "{{url('/dashboard')}}";
-//         }
-//             })
-//         }
-//         }).then((result) => {
-//         if (
-//             /* Read more about handling dismissals below */
-//             result.dismiss === Swal.DismissReason.timer
-//         ) {
-//             console.log('I was closed by the timer')
-//         }
-//         })
-//     // ...
-//   } else {
-//     // User is signed out.
-//     // ...
-//   }
-// });
 
 firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -135,7 +85,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 },
                     onClose: () => {
                     clearInterval(timerInterval)
-                    window.location.href = "{{url('dashboard')}}";
+                    window.location.href = "{{url('loginAdmin')}}";
                 }
                     })
                 }

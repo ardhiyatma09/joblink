@@ -40,7 +40,9 @@ class FirebaseAdminController extends Controller
 
         $users = $ref->getValue();
         foreach ($users as $key=>$user){
-            if($users[$key]["job"] != null) {
+            if($users[$key]["job"] == "null"){
+
+            }else if($users[$key]["job"] != null) {
                 $all_jobs[] = $users[$key]["job"];
             }
         }

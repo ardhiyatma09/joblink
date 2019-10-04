@@ -42,19 +42,19 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li @if (Request::segment(2)=='user' ) class="nav-item active" @endif>
+                    <li @if (Request::segment(1)=='user' ) class="nav-item active" @endif>
                         <a class="nav-link" href="{{URL('user')}}">
                             <i class="material-icons">person</i>
                             <p>Daftar User</p>
                         </a>
                     </li>
-                    <li @if (Request::segment(3)=='list' ) class="nav-item active" @endif>
+                    <li @if (Request::segment(1)=='list' ) class="nav-item active" @endif>
                         <a class="nav-link" href="{{URL('list')}}">
                             <i class="material-icons">content_paste</i>
                             <p>Job List</p>
                         </a>
                     </li>
-                    <li @if (Request::segment(2)=='regisadmin' ) class="nav-item active" @endif>
+                    <li>
                         <a class="nav-link" href="{{URL('regisadmin')}}">
                             <i class="material-icons">person</i>
                             <p>Register Admin Baru</p>
@@ -114,7 +114,7 @@
                                     <a class="dropdown-item" href="#">Profile</a>
                                     <a class="dropdown-item" href="#">Settings</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="" onclick="logout()">Logout</a>
+                                    <a class="dropdown-item" onclick="logout()">Logout</a>
                                 </div>
                             </li>
                         </ul>
@@ -176,6 +176,12 @@
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{URL('assets/js/material-dashboard.js?v=2.1.1')}}" type="text/javascript"></script>
     <script src="{{URL('assets/demo/demo.js')}}"></script>
+    {{-- <script>
+        $('.nav').on('click','li', function(){
+            $('.nav li.nav-item active').removeClass('nav-item active');
+            $(this).addClass('nav-item active')
+        });
+    </script> --}}
     <script>
         $(document).ready( function () {
             $('#table_id').DataTable();
@@ -208,17 +214,31 @@
 
      firebase.initializeApp(config);
 
-       firebase.auth().onAuthStateChanged(function(user) {
-                if (user) {
+    //    firebase.auth().onAuthStateChanged(function(user) {
+    //             if (user) {
 
-                }
-                else{
-                    window.location.href = "{{url('/loginAdmin')}}";
-                }
-                });
+    //             }
+    //             else{
+    //                 window.location.href = "{{url('/loginAdmin')}}";
+    //             }
+    //             });
 
        function logout(){
-        firebase.auth().signOut();
+        $.ajax({
+                type: "get",
+                url: "{{url('logout')}}",
+                data: {
+                    _token: "{{csrf_token()}}",
+                    id: 1
+                },
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    firebase.auth().signOut();
+                    window.location.href = "{{url('dashboard')}}"
+
+                }
+            });
        }
 
      function dell(userid){
