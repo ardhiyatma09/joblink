@@ -33,12 +33,7 @@
             <div class="col-md-6 mb-5 mb-md-0">
 
                 <div class="img-border">
-                    <a href="https://www.youtube.com/watch?v=TcMBFSGVi1c" class="popup-vimeo image-play">
-                        <span class="icon-wrap">
-                            <span class="fas fa-play"></span>
-                        </span>
                         <img src="{{URL('assets/images/hero_2.jpg')}}" alt="Image" class="img-fluid rounded">
-                    </a>
                 </div>
 
             </div>
@@ -139,14 +134,15 @@
 
                 <div class="p-4 mb-3 bg-white">
                     <h3 class="h5 text-black mb-3">Info Kontak</h3>
-              <p class="mb-0 font-weight-bold">Alamat</p>
-              <p class="mb-4">Jalan Inpres No. 13 & 14 Kav.27A, RT.1/RW.1, Kedoya Utara, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11520</p>
+                    <p class="mb-0 font-weight-bold">Alamat</p>
+                    <p class="mb-4">Jalan Inpres No. 13 & 14 Kav.27A, RT.1/RW.1, Kedoya Utara, Kec. Kb. Jeruk, Kota
+                        Jakarta Barat, Daerah Khusus Ibukota Jakarta 11520</p>
 
-              <p class="mb-0 font-weight-bold">Nomor Telepon</p>
-              <p class="mb-4"><a href="#">0823 0169 2727</a></p>
+                    <p class="mb-0 font-weight-bold">Nomor Telepon</p>
+                    <p class="mb-4"><a href="#">0823 0169 2727</a></p>
 
-              <p class="mb-0 font-weight-bold">Alamat Email</p>
-              <p class="mb-0"><a href="#">ardiyatma.wibawa12@gmail.com</a></p>
+                    <p class="mb-0 font-weight-bold">Alamat Email</p>
+                    <p class="mb-0"><a href="#">ardiyatma.wibawa12@gmail.com</a></p>
                 </div>
             </div>
         </div>
@@ -161,10 +157,11 @@
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-md-6 text-center" data-aos="fade">
-                <h1 class="h3 mb-0">Your Dream Job</h1>
-                <p class="h3 text-white mb-5">Is Waiting For You</p>
-                <p><a href="#" class="btn btn-outline-warning py-3 px-4">Find Jobs</a> <a href="#"
-                        class="btn btn-warning py-3 px-4">Apply For A Job</a></p>
+                <h1 class="h3 mb-0">Download</h1>
+                <p class="h3 text-white mb-5">untuk APK android</p>
+                <p><a href="https://github.com/ardhiyatma09/joblink-android" target="_blank"
+                        class="btn btn-outline-success py-3 px-4">Link Github Android</a>
+                    <a href="/download" class="btn btn-success py-3 px-4">Download</a></p>
             </div>
         </div>
     </div>
@@ -200,6 +197,7 @@
                             <div id="lokasi2">
 
                             </div>
+
                         </div>
                     </div>
 

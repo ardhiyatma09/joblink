@@ -29,6 +29,16 @@ Route::get('/user','FirebaseAdminController@index');
 Route::get('/list','FirebaseAdminController@listJob');
 Route::get('/regisadmin','AdminController@register');
 
+//Download App
+Route::get('/download', function(){
+    $file = public_path()."/joblink.apk";
+
+    $header = array(
+        'Content-Type: application/pdf',
+    );
+    return Response::download($file, "joblink.apk",$header);
+});
+
 
 
 

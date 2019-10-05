@@ -70,14 +70,14 @@
                         </a>
                     </li>
                     <li class="m-b-8">
-                            <span class="txt1">
-                                Halaman
-                            </span>
+                        <span class="txt1">
+                            Halaman
+                        </span>
 
-                            <a href="{{URL('loginAdmin')}}" class="txt2">
-                                Admin
-                            </a>
-                        </li>
+                        <a href="{{URL('loginAdmin')}}" class="txt2">
+                            Admin
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

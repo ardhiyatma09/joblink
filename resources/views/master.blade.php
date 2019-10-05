@@ -65,9 +65,9 @@
 
                                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                                             <li><a href="#testimoni">Testimoni</a></li>
-                                            <li><a href="#tambahlowongan">Tambah Lowongan</a></li>
                                             <li><a href="#download">Download APK</a></li>
                                             <li><a href="#lowonganku">Lowonganku</a></li>
+                                            <li><a href="{{URL('/assets/files/joblink.pdf')}}" target="_blank">Dokumentasi</a></li>
                                             <li><a onclick="logout()" href="#"><span
                                                         class="bg-primary text-white py-3 px-4 rounded">Logout</span></a>
                                             </li>
@@ -87,38 +87,52 @@
 
 
         <footer class="site-footer">
-            <div class="container">
+                <div class="container">
 
 
-                <div class="row">
+                  <div class="row">
                     <div class="col-md-4">
-                        <h3 class="footer-heading mb-4 text-white">About</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat quos rem ullam, placeat
-                            amet.</p>
-                        <p><a href="#" class="btn btn-primary pill text-white px-4">Read More</a></p>
+                      <h3 class="footer-heading mb-4 text-white">About</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat quos rem ullam, placeat amet.</p>
+                      <p><a href="#" class="btn btn-primary pill text-white px-4">Read More</a></p>
                     </div>
-                    <div class="col-md-4">
-
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h3 class="footer-heading mb-4 text-white">Quick Menu</h3>
+                            <ul class="list-unstyled">
+                              <li><a href="#">About</a></li>
+                              <li><a href="#">Services</a></li>
+                              <li><a href="#">Approach</a></li>
+                              <li><a href="#">Sustainability</a></li>
+                              <li><a href="#">News</a></li>
+                              <li><a href="#">Careers</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                          <h3 class="footer-heading mb-4 text-white">Categories</h3>
+                            <ul class="list-unstyled">
+                              <li><a href="#">Full Time</a></li>
+                              <li><a href="#">Freelance</a></li>
+                              <li><a href="#">Temporary</a></li>
+                              <li><a href="#">Internship</a></li>
+                            </ul>
+                        </div>
+                      </div>
                     </div>
-                </div>
-                <div class="row pt-5 mt-5 text-center">
+                  </div>
+                  <div class="row pt-5 mt-5 text-center">
                     <div class="col-md-12">
-                        <p>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy; <script data-cfasync="false"
-                                src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script> All Rights Reserved | This template is made with <i
-                                class="icon-heart text-warning" aria-hidden="true"></i> by <a
-                                href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
+                      <p>
+                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | This template is made with <i class="icon-heart text-warning" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                      </p>
                     </div>
 
+                  </div>
                 </div>
-            </div>
-        </footer>
+              </footer>
     </div>
 
     <script src="{{URL('assets/js/jquery-3.3.1.min.js')}}"></script>

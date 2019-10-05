@@ -26,6 +26,7 @@ class FirebaseAdminController extends Controller
         }
 
         return view('admin.user',compact('all_subject'));
+
     }
 
     public function listJob(){
@@ -47,5 +48,16 @@ class FirebaseAdminController extends Controller
             }
         }
         return view('admin.jobList',compact('all_jobs'));
+    }
+
+    public function panggil(Request $request){
+        $login = $request->session()->get('login');
+        $email = $request->session()->get('email');
+        if($login == TRUE){
+            return view('admin.dashboard',compact('email'));
+        }
+        else{
+            return redirect('/loginAdmin');
+        }
     }
 }
